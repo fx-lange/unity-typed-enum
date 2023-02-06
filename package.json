@@ -1,0 +1,14 @@
+{
+  "name": "com.fxlange.typed-enum",
+  "version": "0.0.1",
+  "displayName": "Typed Enum",
+  "description": "Extendable typed enum pattern with custom inspector support.",
+  "unity": "2022.2",
+  "dependencies": {
+  },
+  "author": {
+    "name": "Felix Lange",
+    "email": "mail@felixlange.dev",
+    "url": "https://felixlange.dev"
+  }
+}

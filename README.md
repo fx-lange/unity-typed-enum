@@ -7,6 +7,8 @@ Extendable and typed enum for Unity with custom inspector support.
 ## What?
 
 You wouldn't be here if you haven't heard about the typed enum pattern in c# before, right? 
+Let's just say it's an enum with super powers or an enum as an object so you can add data, behaviour and extend it (just please remember this one power and responsibility saying and don't overuse it).
+
 So all this plugin does is to provide an extendable but lightweight typed enum base class with a custom property drawer. 
 The property drawer allows to select enum options via a popup field.
 
@@ -42,5 +44,4 @@ public class SomeManager : MonoBehaviour
 
 ## Issues
 
-* Currently we compare the type in equals to make sure we don't compare frogs with apples. Overhead?
-* Missing repaint on Undo
+* Currently we compare the type in equals to make sure we don't compare frogs with apples. Might be overhead?

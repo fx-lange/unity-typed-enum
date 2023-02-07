@@ -45,6 +45,7 @@ namespace TypedEnum
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
+            if (other.GetType() != this.GetType()) return false; //TODO overhead?
             return _index == other._index;
         }
 

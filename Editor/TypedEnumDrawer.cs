@@ -1,5 +1,4 @@
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace TypedEnum.Editor
@@ -24,7 +23,7 @@ namespace TypedEnum.Editor
             var currentVal = (TypedEnumBase)fieldInfo.GetValue(property.serializedObject.targetObject);
             if (currentVal == null || !all.Contains(currentVal))
             {
-                popup = new PopupField<TypedEnumBase>(property.displayName, all, 0);
+                popup = new PopupField<TypedEnumBase>(property.displayName, all, -1);
             }
             else
             {
@@ -39,9 +38,22 @@ namespace TypedEnum.Editor
                 EditorUtility.SetDirty(target);
                 property.serializedObject.ApplyModifiedProperties();
             });
-            
             container.Add(popup);
+
+            container.RegisterCallback<AttachToPanelEvent>(evt =>
+            {
+                Undo.undoRedoPerformed += Repaint;
+            });
+            container.RegisterCallback<DetachFromPanelEvent>(evt =>
+            {
+                Undo.undoRedoPerformed -= Repaint;
+            });
             return container;
+
+            void Repaint()
+            {
+                popup.SetValueWithoutNotify((TypedEnumBase)fieldInfo.GetValue(property.serializedObject.targetObject));
+            }
         }
     }
 }

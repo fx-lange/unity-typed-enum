@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace TypedEnum.Editor
@@ -10,13 +11,6 @@ namespace TypedEnum.Editor
         {
             var container = new VisualElement();
 
-            if (property.propertyType != SerializedPropertyType.ManagedReference)
-            {
-                container.Add(new HelpBox($"{property.displayName} must be marked as [SerializeReference].",
-                    HelpBoxMessageType.Error));
-                return container; 
-            }
-
             PopupField<TypedEnumBase> popup;
             var fieldType = fieldInfo.FieldType;
             var all = TypedEnumBase.ListAll(fieldType);
@@ -27,7 +21,7 @@ namespace TypedEnum.Editor
                 return container;
 
             }
-            var currentVal = property.managedReferenceValue as TypedEnumBase;
+            var currentVal = (TypedEnumBase)fieldInfo.GetValue(property.serializedObject.targetObject);
             if (currentVal == null || !all.Contains(currentVal))
             {
                 popup = new PopupField<TypedEnumBase>(property.displayName, all, 0);
@@ -36,10 +30,13 @@ namespace TypedEnum.Editor
             {
                 popup = new PopupField<TypedEnumBase>(property.displayName, all, currentVal);
             }
-            
+
             popup.RegisterValueChangedCallback(changeEvent =>
             {
-                property.managedReferenceValue = changeEvent.newValue;
+                var target = property.serializedObject.targetObject;   
+                Undo.RecordObject(target,$"Set {property.name} of {target.name}");
+                fieldInfo.SetValue(property.serializedObject.targetObject, changeEvent.newValue);
+                EditorUtility.SetDirty(target);
                 property.serializedObject.ApplyModifiedProperties();
             });
             

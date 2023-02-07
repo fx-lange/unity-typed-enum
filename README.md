@@ -43,4 +43,4 @@ public class SomeManager : MonoBehaviour
 ## Issues
 
 * Currently we compare the type in equals to make sure we don't compare frogs with apples. Overhead?
-* References don't match after domain reload, have to compare members anyway. Kick serializereference?
+* Missing repaint on Undo

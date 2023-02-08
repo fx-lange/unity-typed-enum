@@ -1,4 +1,5 @@
 using UnityEditor;
+using UnityEditor.UIElements; //needed for 2021.3
 using UnityEngine.UIElements;
 
 namespace TypedEnum.Editor
@@ -9,7 +10,7 @@ namespace TypedEnum.Editor
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             var container = new VisualElement();
-
+            
             PopupField<TypedEnumBase> popup;
             var fieldType = fieldInfo.FieldType;
             var all = TypedEnumBase.ListAll(fieldType);

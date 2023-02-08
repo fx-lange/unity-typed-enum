@@ -1,9 +1,7 @@
 {
-    "name": "TypedEnum.Sample",
+    "name": "TypedEnum",
     "rootNamespace": "",
-    "references": [
-        "GUID:bba7f1cf668384f788554e3c15ff28a8"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

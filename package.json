@@ -1,6 +1,6 @@
 {
   "name": "com.fxlange.typed-enum",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "displayName": "Typed Enum",
   "description": "Extendable typed enum pattern with custom inspector support.",
   "unity": "2022.2",

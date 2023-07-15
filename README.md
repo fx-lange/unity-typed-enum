@@ -1,20 +1,18 @@
-# Typed Enum for Unity
+**Typed Enum** is a plugin that brings the benefits of the typed enum pattern to Unity, providing a lightweight and extendable base class, along with a custom property drawer for convenient selection of enum options using drop down fields in the inspector.
 
-*Work In Progress!*
+## Dependencies
 
-Extendable and typed enum for Unity with custom inspector support.
+* Unity 2022.2
 
-## What?
+## Installation
 
-You wouldn't be here if you haven't heard about the typed enum pattern in c# before, right? 
-Let's just say it's an enum with super powers or an enum as an object so you can add data, behaviour and extend it (just please remember this one power and responsibility saying and don't overuse it).
+Install via Package Manager 
+* [Add package via git URL](https://docs.unity3d.com/Manual/upm-ui-giturl.html)
+* `https://github.com/fx-lange/unity-typed-enum.git`
 
-So all this plugin does is to provide an extendable but lightweight typed enum base class with a custom property drawer. 
-The property drawer allows to select enum options via a popup field.
+## How to use
 
-## Usage
-
-Extend ``TypedEnumBase`` and add all your static members.
+Extend ``TypedEnumBase`` and add static members.
 
 ```c#
 public class MyState : TypedEnumBase
@@ -38,10 +36,6 @@ public class SomeManager : MonoBehaviour
 }
 ```
 
-## Dependencies
+## Known Issues
 
-* Unity 2022.2 (as the property drawer is only implemented in UIToolkit)
-
-## Issues
-
-* Currently we compare the type in equals to make sure we don't compare frogs with apples. Might be overhead?
+* Currently we compare the type in equals to make sure we don't compare frogs with apples. Possible overhead.

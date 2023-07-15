@@ -1,3 +1,5 @@
+# Typed Enum for Unity
+
 **Typed Enum** is a plugin that brings the benefits of the typed enum pattern to Unity, providing a lightweight and extendable base class, along with a custom property drawer for convenient selection of enum options using drop down fields in the inspector.
 
 ## Dependencies
